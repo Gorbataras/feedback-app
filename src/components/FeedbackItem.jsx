@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Card from './shared/Card'
 
-function FeebackItem({item}) {
+function FeedbackItem({item}) {
   
   return (
         <Card >
@@ -15,4 +15,4 @@ FeedbackItem.propTypes = {
   item: PropTypes.object.isRequired,
 }
 
-export default FeebackItem
+export default FeedbackItem
