@@ -2,20 +2,22 @@ import React from 'react'
 import Card from './shared/Card'
 import {useState} from 'react'
 import Button from './shared/Button';
-
+import RatingSelect from './RatingSelect'
 
 function FeedbackForm() {
     const [text, setText] = useState('')
     const [btnDisabled, setbtnDisabled] = useState(true)
     const [message, setmessage] = useState('')
+    const [rating, setRating] = useState(10)
 
+    const minReviewLength = 10
 
 
     const handleTextChange = (e) => {
         if (text === '') {
             setbtnDisabled(true)
             setmessage(null)
-        } else if(text!== '' && text.trim().length <= 10) {
+        } else if(text !== '' && text.trim().length <= minReviewLength) {
             setmessage('Text must be at least 10 characters')
             setbtnDisabled(true)
         } else {
@@ -28,7 +30,7 @@ function FeedbackForm() {
   return <Card>
       <form >
           <h2>How would you rate your service with us?</h2>
-
+            <RatingSelect select={setRating} selected={rating}/>
           <div className="input-group">
               <input 
               onChange={handleTextChange}
