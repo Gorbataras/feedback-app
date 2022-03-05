@@ -10,8 +10,23 @@ export const FeedbackProvider = ({children}) => {
             id: 1,
             text: 'From context',
             rating: 10
+        },
+        {
+            id: 2,
+            text: 'From context',
+            rating: 10
+        },
+        {
+            id: 3,
+            text: 'From context',
+            rating: 10
         }
     ])
+
+    const [feedbackEdit, setFeedbackEdit] = useState({
+        item: {},
+        edit: false
+    })
 
     const addFeedback = (newFeedback) => {
         newFeedback.id = uuidv4()
@@ -24,10 +39,18 @@ export const FeedbackProvider = ({children}) => {
         }
     }
 
+    const editFeedback = (item) => {
+        setFeedbackEdit({
+            item,
+            edit: true
+        })
+    }
+
     return <FeedbackContext.Provider value={{
         feedback,
         deleteFeedback,
         addFeedback,
+        editFeedback
     }}>
         {children}
         </FeedbackContext.Provider>
